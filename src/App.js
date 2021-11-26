@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import DemoApp from './DemoApp';
 
 function App() {
+  const calendarRef = React.createRef();
+
+  const someMethod = () => {
+    let calendarApi = calendarRef.current.getApi()
+    console.log('📅', calendarApi);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello 🍼 Baby</h1>
+      <section style={{
+        margin: "2.5rem 15%",
+      }}>
+        <DemoApp calendarRef={calendarRef} />
+      </section>
+      <button
+        style={{
+          marginBottom: '1.25rem'
+        }}
+        onClick={someMethod}
+      >Click Me!</button>
     </div>
   );
 }
